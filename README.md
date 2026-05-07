@@ -1,5 +1,8 @@
 So this is my README. Please read this. Its important, trust me.
 
+ALSO READ THE DOCS FOLDER!! ITS ALSO IMPORTANT! READ EVERY README YOU SEE IN HERE IF YOU DONT KNOW WHAT YOUR DOING!
+This program is purposefully very beginner friendly.
+
 First of all KRNL Hardware Info is a project by a single dev. If your reading this then this is normal since this code
 isnt obfuscated at all. Maybe just to trick some people this will be obfuscated into simple BASE64.
 
