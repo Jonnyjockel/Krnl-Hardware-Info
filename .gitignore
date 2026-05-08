@@ -1,0 +1,40 @@
+# Visual Studio user/workspace files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.opendb
+ipch/
+
+# Build output directories
+Debug/
+Release/
+x64/
+x86/
+build/
+out/
+
+# C/C++ and linker outputs
+*.obj
+*.iobj
+*.ipdb
+*.ilk
+*.exp
+*.lib
+
+# Built binaries and driver/signing outputs
+*.exe
+*.dll
+*.sys
+*.cat
+*.cer
+*.pdb
+
+# Logs and temporary files
+*.log
+*.tmp
+*.tlog
+*.lastbuildstate
+*.recipe

@@ -10,15 +10,36 @@ Write-Host "Configuration: $Configuration"
 Write-Host "Platform: $Platform"
 
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
-$solutions = Get-ChildItem -LiteralPath $repoRoot -Recurse -Filter "*.sln" -File
-$projects = Get-ChildItem -LiteralPath $repoRoot -Recurse -File |
-    Where-Object { $_.Extension -in @(".vcxproj", ".wixproj") }
+$solution = Join-Path $repoRoot "KrnlHardwareInfo.sln"
 
-if ($solutions.Count -eq 0 -and $projects.Count -eq 0) {
-    Write-Warning "NOT_IMPLEMENTED: no Visual Studio solution or project files exist yet."
-    Write-Host "Add a user-mode app project and a WDK driver project before this script can build anything."
-    exit 0
+if (-not (Test-Path -LiteralPath $solution)) {
+    Write-Warning "No solution file was found at $solution."
+    exit 1
 }
 
-Write-Warning "NOT_IMPLEMENTED: wire this script to MSBuild once project files are added."
-Write-Host "Found $($solutions.Count) solution file(s) and $($projects.Count) project file(s)."
+function Find-MsBuild {
+    $fromPath = Get-Command msbuild.exe -ErrorAction SilentlyContinue
+    if ($fromPath) {
+        return $fromPath.Source
+    }
+
+    $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+    if (Test-Path -LiteralPath $vswhere) {
+        $found = & $vswhere -latest -products * -requires Microsoft.Component.MSBuild -find "MSBuild\Current\Bin\MSBuild.exe"
+        if ($LASTEXITCODE -eq 0 -and $found) {
+            return $found[0]
+        }
+    }
+
+    return $null
+}
+
+$msbuild = Find-MsBuild
+if (-not $msbuild) {
+    Write-Warning "MSBuild was not found. Open a Visual Studio Developer Command Prompt or install Visual Studio Build Tools."
+    Write-Host "See docs/build.md for the beginner build notes."
+    exit 1
+}
+
+Write-Host "MSBuild: $msbuild"
+& $msbuild $solution /m /p:Configuration=$Configuration /p:Platform=$Platform

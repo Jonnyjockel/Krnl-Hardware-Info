@@ -7,6 +7,7 @@ Use this folder for architecture notes, driver safety notes, testing instruction
 Current foundation files:
 
 - `architecture.md`: layer responsibilities and dependency direction.
+- `build.md`: beginner build setup notes for Visual Studio, MSVC, SDK, and WDK.
 - `ioctl-flow.md`: app/driver communication flow and current IOCTLs.
 - `implementation-status.md`: what is implemented, placeholder, and intentionally not implemented.
 - `safety.md`: VM-only and kernel-driver safety notes.

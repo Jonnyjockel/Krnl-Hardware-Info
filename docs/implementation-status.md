@@ -13,13 +13,15 @@
 - Minimal WDM-style driver skeleton.
 - Driver status IOCTL handler.
 - Basic CPUID IOCTL handler.
-- Placeholder build, clean, test, and VM deployment notes.
+- Initial Visual Studio solution and project files.
+- Basic MSBuild helper script.
+- Placeholder clean, test, and VM deployment notes.
 
 ## Placeholder / TODO
 
-- Visual Studio solution and project files.
-- WinUI 3 UI.
+- Driver `.inf` package.
 - Driver installation/removal scripts.
+- WinUI 3 UI.
 - Test-signing workflow.
 - VM deployment automation.
 - Real hardware temperature monitoring.
@@ -33,4 +35,3 @@
 - Memory scanning.
 - Anti-cheat bypass or evasion behavior.
 - Undocumented kernel tricks.
-
