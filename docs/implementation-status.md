@@ -15,6 +15,7 @@
 - Basic CPUID IOCTL handler.
 - Initial Visual Studio solution and project files.
 - Basic MSBuild helper script.
+- Compile-time shared contract layout checks.
 - Placeholder clean, test, and VM deployment notes.
 
 ## Placeholder / TODO
