@@ -1,14 +1,14 @@
 # KRNL Hardware Info
 
-So this is my README. Please read this. Its important, trust me.
+So this is my README. Please read this. It's important, trust me.
 
 KRNL Hardware Info is an experimental low-level hardware info / research project
-by a single dev. It is meant to be beginner friendly, VM-first, and honest about
+by a single dev. It is meant to be beginner-friendly, VM-first, and honest about
 the risks that come with playing around near kernel-level stuff.
 
 > [!IMPORTANT]
 > ALSO READ THE DOCS FOLDER!! ITS ALSO IMPORTANT! READ EVERY README YOU SEE IN
-> HERE IF YOU DONT KNOW WHAT YOUR DOING!
+> HERE IF YOU DONT KNOW WHAT YOU'RE DOING!
 
 ---
 
@@ -30,8 +30,9 @@ the risks that come with playing around near kernel-level stuff.
 - This program is purposefully very beginner friendly.
 - This README is gonna be slightly structured too.
 - This is a project by a single dev.
-- The code isnt obfuscated at all.
-- Maybe just to trick some people this will be obfuscated into simple BASE64.
+- The code isn't obfuscated at all.
+- The goal is learning, hardware telemetry, and VM artifact research. Nothing
+  sneaky.
 
 ---
 
@@ -44,7 +45,7 @@ The current idea is:
 
 - hardware monitoring
 - kernel-level driver experiments
-- checking traces that a Hypervisor would leave behind
+- checking virtualization artifacts that a Hypervisor would leave behind
 - learning how this stuff connects without pretending it is magically safe
 
 ---
@@ -66,11 +67,11 @@ Even though ik the Capabilities KRNL has, use a VM.
 
 KRNL is a hardware Monitor running on a Kernel level through a driver.
 
-KRNL's main purpose is to let you see not just temps but also see traces that a
-Hypervisor would leave behind.
+KRNL's main purpose is to help learn about hardware telemetry and the visible
+artifacts that virtualization can leave behind.
 
-Ik what cheat devs could do with this if they actually manage to build a good HV
-(Hypervisor).
+Ik low-level driver and Hypervisor stuff can get abused if people take it in the
+wrong direction. That is not what this repo is for.
 
 Even though ik the Capabilities KRNL has PLEASE dont use this on your Personal
 PC.
@@ -96,15 +97,15 @@ abuse.
 
 ### 2. Why even run this program if the driver may be unsafe?
 
-This Tool isnt for OPSEC maniacs. If you are one improve the driver yourself.
-This is for people trying to make a VM or Hypervisor stealthy and more
-undetectable. THIS IS NOT AN OPSEC TOOL "Mr. Robot"!!
+This tool isnt for OPSEC maniacs. If you are one improve the driver yourself.
+This is for people learning how Windows drivers, hardware telemetry, and
+virtualization artifacts work. THIS IS NOT AN OPSEC TOOL "Mr. Robot"!!
 
 ### 3. Why would i need this if i can find out everything myself?
 
 First of all, if you want to find everything out yourself, do it and delete my
 program. Second of all, KRNL makes it easier to find out info about if a
-Hypervisor can be Detected. THIS IS FOR SECURITY RESEARCH!!
+Hypervisor leaves visible artifacts. THIS IS FOR LEARNING AND SECURITY RESEARCH!!
 
 ### 4. What if i dont do HV development?
 
@@ -114,7 +115,8 @@ KRNL??
 ### 5. Are you gonna sign your driver?
 
 No. Do it yourself if your desperate for a (maybe) vulnerable driver thats
-signed. Theres plenty on the Internet.
+signed. For this repo, development means local test-signing in a VM, not
+shipping a magical production driver.
 
 ### 6. Why would i believe that KRNL isnt a RAT or any other kind malware?
 
@@ -138,5 +140,19 @@ without making the project sound more finished than it is.
 
 ## Build Status
 
-Build status is not wired up here yet.
+This project is still early.
 
+What exists right now:
+
+- skeleton app/driver/shared code
+- docs explaining the intended direction
+- Visual Studio / MSBuild project setup started
+- beginner notes for WDK, test-signing, and VM testing
+
+What is still rough:
+
+- build setup may still need local Visual Studio / WDK retargeting
+- driver work requires the WDK
+- loading the driver requires proper signing or test-signing
+- VM testing is strongly recommended
+- this is not a finished hardware monitor yet
