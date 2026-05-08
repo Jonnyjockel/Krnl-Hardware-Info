@@ -13,9 +13,19 @@
       <UniqueIdentifier>{83884E1A-E24E-446F-B812-3C7190B069E5}</UniqueIdentifier>
       <Extensions>h;hpp</Extensions>
     </Filter>
+    <Filter Include="Docs">
+      <UniqueIdentifier>{87EF6024-03F4-4A8A-92A2-2256896E843C}</UniqueIdentifier>
+      <Extensions>md</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CpuidText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="DriverClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HardwareInfoService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
@@ -26,7 +36,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CpuidText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="DriverClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareInfoService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Logger.h">
@@ -35,5 +51,10 @@
     <ClInclude Include="..\shared\krnl_contracts.h">
       <Filter>Shared Contracts</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="winui-placeholder.md">
+      <Filter>Docs</Filter>
+    </None>
   </ItemGroup>
 </Project>

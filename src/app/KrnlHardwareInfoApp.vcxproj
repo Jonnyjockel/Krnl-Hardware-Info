@@ -77,14 +77,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CpuidText.cpp" />
     <ClCompile Include="DriverClient.cpp" />
+    <ClCompile Include="HardwareInfoService.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CpuidText.h" />
     <ClInclude Include="DriverClient.h" />
+    <ClInclude Include="HardwareInfoService.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="..\shared\krnl_contracts.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="winui-placeholder.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

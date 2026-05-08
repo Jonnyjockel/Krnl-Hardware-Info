@@ -24,9 +24,9 @@ Currently implemented:
 - CPUID leaf `0` vendor-string handling in the response
 - CPUID leaf `1` hypervisor-present bit handling in the response
 
-Important beginner detail: the current console app only asks for CPUID leaf `0`,
-so it prints the CPU vendor string. It does not currently ask leaf `1`, so it
-does not display the hypervisor-present bit yet.
+Important beginner detail: the current console app asks for CPUID leaf `0` to
+show the CPU vendor string, then asks leaf `1` to show the hypervisor-present
+bit as one signal.
 
 That means the current code is CPUID plumbing, not a full hypervisor detector.
 
@@ -40,16 +40,14 @@ current driver already knows how to place that bit into
 
 Limitations:
 
-- the app does not display it yet
 - the bit is only one signal
 - some environments may expose it differently
 - one bit is not enough to confidently describe the whole system
 
 Good future work:
 
-- have the app request leaf `1`
-- display the result clearly as one signal, not a final verdict
 - add tests around CPUID response parsing
+- show more context around what the bit does and does not prove
 
 ## Detection Layer 2: CPUID Vendor Leaf `0x40000000`
 

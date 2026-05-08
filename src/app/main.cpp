@@ -1,12 +1,15 @@
-#include "DriverClient.h"
+#include "CpuidText.h"
+#include "HardwareInfoService.h"
 #include "Logger.h"
 
 #include <sstream>
 
 int main() {
-    krnl::app::DriverClient client;
+    krnl::app::HardwareInfoService hardware_info;
 
-    const krnl::app::DriverClientStatus open_status = client.Open();
+    krnl::app::LogInfo("KRNL Hardware Info console smoke test");
+
+    const krnl::app::HardwareInfoResult open_status = hardware_info.Connect();
     if (!open_status.succeeded) {
         std::ostringstream message;
         message << open_status.message << " Win32 error: " << open_status.win32_error;
@@ -14,38 +17,45 @@ int main() {
         return 1;
     }
 
-    KRNL_DRIVER_STATUS_RESPONSE driver_status = {};
-    const krnl::app::DriverClientStatus status_result = client.QueryDriverStatus(&driver_status);
-    if (!status_result.succeeded) {
+    const krnl::app::DriverStatusInfo driver_status = hardware_info.QueryDriverStatus();
+    if (!driver_status.result.succeeded) {
         std::ostringstream message;
-        message << status_result.message << " Win32 error: " << status_result.win32_error;
+        message << driver_status.result.message << " Win32 error: " << driver_status.result.win32_error;
         krnl::app::LogError(message.str());
         return 1;
     }
 
     std::ostringstream status_message;
     status_message << "KRNL driver version "
-                   << driver_status.version_major << '.'
-                   << driver_status.version_minor << '.'
-                   << driver_status.version_patch
-                   << " loaded=" << static_cast<int>(driver_status.driver_loaded);
+                   << driver_status.response.version_major << '.'
+                   << driver_status.response.version_minor << '.'
+                   << driver_status.response.version_patch
+                   << " loaded=" << static_cast<int>(driver_status.response.driver_loaded);
     krnl::app::LogInfo(status_message.str());
 
-    KRNL_CPUID_REQUEST cpuid_request = {};
-    cpuid_request.leaf = 0;
-    cpuid_request.subleaf = 0;
-
-    KRNL_CPUID_RESPONSE cpuid_response = {};
-    const krnl::app::DriverClientStatus cpuid_result = client.QueryCpuid(cpuid_request, &cpuid_response);
-    if (cpuid_result.succeeded) {
+    const krnl::app::CpuidInfo cpu_vendor = hardware_info.QueryCpuVendor();
+    if (cpu_vendor.result.succeeded) {
         std::ostringstream cpuid_message;
-        cpuid_message << "CPU vendor: " << cpuid_response.vendor_string;
+        cpuid_message << "CPU vendor: " << cpu_vendor.response.vendor_string;
         krnl::app::LogInfo(cpuid_message.str());
+        krnl::app::LogInfo("CPUID leaf 0 registers: " + krnl::app::FormatCpuidRegisters(cpu_vendor.response));
     } else {
         std::ostringstream message;
-        message << cpuid_result.message << " Win32 error: " << cpuid_result.win32_error;
+        message << cpu_vendor.result.message << " Win32 error: " << cpu_vendor.result.win32_error;
         krnl::app::LogError(message.str());
     }
+
+    const krnl::app::CpuidInfo hypervisor_bit = hardware_info.QueryHypervisorPresentBit();
+    if (hypervisor_bit.result.succeeded) {
+        krnl::app::LogInfo(krnl::app::FormatHypervisorPresent(hypervisor_bit.response.hypervisor_present));
+        krnl::app::LogInfo("CPUID leaf 1 registers: " + krnl::app::FormatCpuidRegisters(hypervisor_bit.response));
+    } else {
+        std::ostringstream message;
+        message << hypervisor_bit.result.message << " Win32 error: " << hypervisor_bit.result.win32_error;
+        krnl::app::LogError(message.str());
+    }
+
+    krnl::app::LogInfo(krnl::app::ExplainCpuidRegisters());
 
     return 0;
 }

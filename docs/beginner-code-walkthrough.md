@@ -347,11 +347,9 @@ KRNL_CPUID_RESPONSE
     vendor_string
 ```
 
-Right now, the app only asks for leaf `0`, subleaf `0`, which usually returns
-the CPU vendor string such as `GenuineIntel` or `AuthenticAMD`.
-
-Important detail: the current app does not ask leaf `1`, so the app does not
-currently print the `hypervisor_present` flag.
+Right now, the app asks for leaf `0`, subleaf `0`, which usually returns the CPU
+vendor string such as `GenuineIntel` or `AuthenticAMD`. It also asks leaf `1`,
+subleaf `0`, so it can print the `hypervisor_present` flag as one signal.
 
 ### What `Logger` does
 
@@ -387,6 +385,10 @@ print version and loaded flag
 query CPUID leaf 0
     |
 print CPU vendor if the query succeeds
+    |
+query CPUID leaf 1
+    |
+print the hypervisor-present bit if the query succeeds
 ```
 
 If opening the driver or querying driver status fails, the app logs an error and
@@ -683,13 +685,13 @@ Currently:
 
 - Leaf `0` returns the CPU vendor string.
 - Leaf `1` sets `hypervisor_present` if ECX bit 31 is set.
-- The app currently requests only leaf `0`, so it prints only the vendor string.
+- The app currently requests both leaves and prints the vendor string plus the
+  hypervisor-present bit.
 
 ### What is still TODO
 
 Still TODO:
 
-- Request leaf `1` from the app if the app wants to display the hypervisor bit.
 - Parse more CPUID leaves safely and clearly.
 - Document what each parsed field means.
 - Add tests for CPUID parsing.

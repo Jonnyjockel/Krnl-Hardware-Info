@@ -8,6 +8,8 @@
 - Shared request/status enums.
 - Shared response structs for driver status, CPUID, and generic status.
 - Basic user-mode `DriverClient` wrapper.
+- Basic user-mode `HardwareInfoService` wrapper.
+- Beginner-friendly CPUID console formatting.
 - Basic logging helpers.
 - Minimal console app entry point.
 - Minimal WDM-style driver skeleton.
@@ -25,7 +27,8 @@
 
 - Driver `.inf` package.
 - Driver installation/removal scripts.
-- WinUI 3 UI.
+- WinUI 3 UI. A placeholder layout exists, but no Windows App SDK project is
+  wired up yet.
 - Test-signing automation.
 - VM deployment automation.
 - Full hardware monitoring is not implemented yet. Current telemetry is limited
@@ -75,13 +78,12 @@ Currently implemented:
 - CPUID leaf `0` vendor-string handling in the response
 - CPUID leaf `1` hypervisor-present bit handling in the response
 
-The current console app only requests CPUID leaf `0`, so the visible app output
-is still just the CPU vendor string plus driver status. Leaf `1` support exists
-in the driver response path, but the app does not display it yet.
+The current console app requests CPUID leaf `0` for the CPU vendor string and
+leaf `1` for the hypervisor-present bit. It prints the bit as one signal, not as
+a perfect detector.
 
 Planned safe research checks:
 
-- CPUID hypervisor-present bit display
 - CPUID hypervisor vendor leaf `0x40000000`
 - SMBIOS/BIOS strings from documented user-mode sources where possible
 - PCI/device artifacts from documented enumeration paths
