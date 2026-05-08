@@ -19,8 +19,11 @@ the risks that come with playing around near kernel-level stuff.
 Join the Discord for project updates, discussion, and chaos.
 
 ---
+
 ## Table of Contents
 
+- [At a Glance](#at-a-glance)
+- [What This is / Is Not](#what-this-is--is-not)
 - [Quick Notes](#quick-notes)
 - [Current Status](#current-status)
 - [Safety Warning](#safety-warning)
@@ -31,6 +34,33 @@ Join the Discord for project updates, discussion, and chaos.
 - [Build Status](#build-status)
 
 ---
+
+## At a Glance
+
+- **Project type:** Windows hardware info / low-level research tool
+- **Core idea:** user-mode app + kernel driver
+- **Current focus:** CPUID, driver communication, virtualization artifacts
+- **Safety model:** VM-first, test-signing only, no bypass/stealth loader stuff
+- **Status:** early development, skeleton/docs/build setup are being worked on
+
+--
+
+## What This Is / Is Not
+
+**KRNL is:**
+
+- a beginner-friendly Windows driver learning project
+- a hardware telemetry / CPUID research tool
+- a VM-first experiment for learning low-level Windows internals
+
+**KRNL is not:**
+
+- a cheat
+- a malware project
+- a driver-signing bypass tool
+- something you should casually run on your daily PC
+
+--
 
 ## Quick Notes
 
