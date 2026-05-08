@@ -673,6 +673,10 @@ Important: this is only one signal. A serious compatibility or research tool
 would need careful parsing and documentation. The current project does not
 implement deep detection logic.
 
+See `hypervisor-detection-roadmap.md` for the safe research roadmap. The short
+version is that KRNL should treat CPUID, BIOS strings, device artifacts, and any
+future timing checks as separate observations, not one perfect answer.
+
 ### What this project currently checks
 
 Currently:

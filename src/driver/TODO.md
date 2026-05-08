@@ -7,6 +7,7 @@ Future work:
 - Add real hardware monitor queries using documented kernel APIs where possible.
 - Keep driver telemetry limited to queries that truly need kernel mode.
 - Document each future temperature, clock, or sensor source before adding code.
+- Keep hypervisor research focused on documented artifacts and VM safety checks.
 - Add careful input validation for every new IOCTL.
 - Add VM-only integration tests before expanding driver behavior.
 - Decide how the driver will be built, packaged, installed, and test-signed.

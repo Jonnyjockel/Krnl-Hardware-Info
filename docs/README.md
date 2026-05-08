@@ -10,6 +10,7 @@ Current foundation files:
 - `build.md`: beginner build setup notes for Visual Studio, MSVC, SDK, and WDK.
 - `driver-service.md`: VM-only manual driver install/start/stop/remove notes.
 - `hardware-monitoring-roadmap.md`: honest roadmap for future hardware telemetry.
+- `hypervisor-detection-roadmap.md`: beginner-friendly roadmap for virtualization artifact research.
 - `ioctl-flow.md`: app/driver communication flow and current IOCTLs.
 - `implementation-status.md`: what is implemented, placeholder, and intentionally not implemented.
 - `safety.md`: VM-only and kernel-driver safety notes.
