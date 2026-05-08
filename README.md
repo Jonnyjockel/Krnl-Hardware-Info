@@ -12,6 +12,13 @@ the risks that come with playing around near kernel-level stuff.
 
 ---
 
+## Community / Updates
+
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/RkhHNufAQu)
+
+Join the Discord for project updates, discussion, and chaos.
+
+---
 ## Table of Contents
 
 - [Quick Notes](#quick-notes)
