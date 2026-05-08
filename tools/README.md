@@ -8,4 +8,4 @@ Current foundation files:
 
 - `build.ps1`: MSBuild helper for the root Visual Studio solution.
 - `clean.ps1`: dry-run clean helper. Actual deletion is intentionally disabled until build output paths are finalized.
-- `vm-deployment-notes.md`: notes for future VM, test-signing, and deployment helpers.
+- `vm-deployment-notes.md`: safe manual VM workflow and notes for future deployment helpers.

@@ -34,7 +34,7 @@ it just points MSBuild at the SDK/WDK you actually installed.
 
 - There is no driver install script.
 - There is no driver removal script.
-- There is no test-signing workflow.
+- There is no automated test-signing workflow.
 - There is no `.inf` package yet.
 - There is no VM deployment automation.
 - Building the driver still requires a real WDK install.
@@ -113,7 +113,8 @@ matches your Windows SDK/Visual Studio setup.
 ### Driver signing or catalog errors
 
 That part is not fully wired up yet. Driver signing, test certificates, `.cat`
-generation, and VM deployment still need their own careful setup.
+generation, and VM deployment still need their own careful setup. Start with
+`test-signing.md` before trying to load the driver in a VM.
 
 ### The app builds but says it cannot open the driver
 

@@ -16,14 +16,15 @@
 - Initial Visual Studio solution and project files.
 - Basic MSBuild helper script.
 - Compile-time shared contract layout checks.
-- Placeholder clean, test, and VM deployment notes.
+- Beginner docs for VM-only driver service and test-signing workflows.
+- Placeholder clean, test, signing automation, and VM deployment notes.
 
 ## Placeholder / TODO
 
 - Driver `.inf` package.
 - Driver installation/removal scripts.
 - WinUI 3 UI.
-- Test-signing workflow.
+- Test-signing automation.
 - VM deployment automation.
 - Real hardware temperature monitoring.
 - Real hypervisor trace research and detection logic.
