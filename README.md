@@ -179,6 +179,12 @@ without making the project sound more finished than it is.
 
 This project is still early.
 
+| Component | Status |
+|---|---|
+| **User-mode app** | Builds and launches successfully |
+| **Driver connection** | Expected to fail until the driver is built, installed, and started |
+| **Kernel driver** | Build/test-signing workflow still in progress |
+
 What exists right now:
 
 - skeleton app/driver/shared code

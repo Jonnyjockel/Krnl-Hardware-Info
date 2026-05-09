@@ -11,6 +11,14 @@ int main() {
 
     const krnl::app::HardwareInfoResult open_status = hardware_info.Connect();
     if (!open_status.succeeded) {
+        if (open_status.win32_error == ERROR_FILE_NOT_FOUND) {
+            krnl::app::LogError("The app launched correctly, but the KRNL driver device was not found.");
+            krnl::app::LogError("Win32 error 2 means Windows could not find \\\\.\\KrnlHardwareInfo.");
+            krnl::app::LogError("This usually means the driver is not built, installed, or started yet.");
+            krnl::app::LogError("Driver testing needs the WDK, test-signing, and the VM workflow from docs/build.md, docs/test-signing.md, and docs/driver-service.md.");
+            return 1;
+        }
+
         std::ostringstream message;
         message << open_status.message << " Win32 error: " << open_status.win32_error;
         krnl::app::LogError(message.str());

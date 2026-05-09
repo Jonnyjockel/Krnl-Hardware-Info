@@ -70,6 +70,22 @@ The output goes under:
 build\KrnlHardwareInfoApp\x64\Debug\
 ```
 
+## App Smoke Test
+
+The user-mode app can launch before the driver is installed. In that state, the
+expected result is a beginner-friendly driver-not-found message.
+
+If you see Win32 error 2 / `ERROR_FILE_NOT_FOUND`, the app started correctly but
+Windows could not find:
+
+```text
+\\.\KrnlHardwareInfo
+```
+
+That usually means the driver is not built, installed, or started yet. Continue
+with the WDK, test-signing, and VM-only driver workflow before expecting driver
+status or CPUID queries to work.
+
 ## Build the Driver
 
 Install the WDK first. Then use a Developer Command Prompt that can see the WDK

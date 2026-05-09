@@ -12,6 +12,8 @@
 - Beginner-friendly CPUID console formatting.
 - Basic logging helpers.
 - Minimal console app entry point.
+- User-mode app builds/runs as a smoke test when the local MSVC/SDK setup is
+  available.
 - Minimal WDM-style driver skeleton.
 - Driver status IOCTL handler.
 - Basic CPUID IOCTL handler.
@@ -66,6 +68,22 @@ and stay split across the layers:
 - app formatting/UI in `src/app`
 - shared ABI structs and IOCTL values in `src/shared`
 - driver-side kernel queries in `src/driver` only when truly needed
+
+## User-Mode App Runtime Status
+
+The user-mode app is meant to run as a smoke test first.
+
+Current expected behavior:
+
+- If the KRNL driver is not built, installed, and started, the app should launch
+  and then report that `\\.\KrnlHardwareInfo` was not found.
+- Win32 error 2 / `ERROR_FILE_NOT_FOUND` is expected in that state because the
+  driver device symbolic link does not exist yet.
+- To get past that point, the driver needs the WDK/test-signing/VM workflow
+  described in the build and driver-service docs.
+
+This is not a hardware telemetry failure. It is the app correctly saying the
+driver side is not loaded yet.
 
 ## Hypervisor Detection Status
 
