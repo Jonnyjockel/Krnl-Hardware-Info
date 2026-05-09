@@ -199,3 +199,9 @@ What is still rough:
 - loading the driver requires proper signing or test-signing
 - VM testing is strongly recommended
 - this is not a finished hardware monitor yet
+
+Roadmap:
+
+- general skeleton is finished
+- User-mode app builds and runs successfully.
+- Current expected runtime behavior: reports missing `\\.\KrnlHardwareInfo` until the driver is built, installed, and started.
