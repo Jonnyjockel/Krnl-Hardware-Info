@@ -9,4 +9,6 @@ Current foundation files:
 - `build.ps1`: MSBuild helper for the root Visual Studio solution.
 - `clean.ps1`: clean helper. Default is dry-run; pass `-Execute` to actually delete `build`/`out`/`artifacts`. `-Execute` requires a real interactive confirmation (typed `y`/`yes`) and refuses to run when input is not interactive (e.g. piped/redirected). No `-Force` bypass.
 - `deploy-to-vm.ps1`: copies the built app executable (and driver binary, if built) into a deploy folder for manual VM testing. Default destination: `vm-deploy\` next to the repo; override with `-Destination`. See `vm-deployment-notes.md` for the manual VM workflow.
+- `make-test-cert.ps1`: creates a local self-signed CodeSigning test certificate and exports `krnl-test.cer` / `krnl-test.pfx` for VM driver test-signing. Use `-DryRun` first; see `docs\test-signing.md`.
+- `tools-tests.ps1`: safe dry-run smoke tests for the tools above (only non-destructive modes).
 - `vm-deployment-notes.md`: safe manual VM workflow and notes for future deployment helpers.
