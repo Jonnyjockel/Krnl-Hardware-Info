@@ -50,23 +50,17 @@ This project should be tested in a disposable Windows VM.
    If anything feels messy, revert. That is the whole point of doing this in a
    VM.
 
-## Future Helper Scripts
+## Helper Scripts Status
 
-Future harmless helper scripts can live in this folder for:
+- `tools\deploy-to-vm.ps1` — copies the built app (and driver, when built) into a deploy folder.
+- `tools\make-test-cert.ps1` — creates a local self-signed test certificate for test-signing.
+- `tools\tools-tests.ps1` — dry-run smoke tests for the tools.
 
-- creating a local test certificate
-- copying the app and driver to a test VM
-- installing and removing the driver service through normal `sc.exe` commands
+Still future / not started:
+
+- installing and removing the driver service through normal `sc.exe` commands (deliberately not started yet)
 - capturing driver logs
 - cleaning copied test files
 
 Do not add driver-signing bypasses, stealth loading, or anything that hides what
 the driver is doing.
-
-## Still TODO
-
-- Local test certificate creation script.
-- Documented signing command once the build output is finalized.
-- Driver install/remove scripts.
-- VM copy/deploy helper.
-- Log capture helper.

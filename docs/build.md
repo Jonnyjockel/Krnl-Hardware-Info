@@ -32,11 +32,11 @@ it just points MSBuild at the SDK/WDK you actually installed.
 
 ## What Does Not Build / Run Magically Yet
 
-- There is no driver install script.
+- There is no driver install script (deliberately not started yet).
 - There is no driver removal script.
-- There is no automated test-signing workflow.
 - There is no `.inf` package yet.
-- There is no VM deployment automation.
+- Test-cert creation is helped by `tools\make-test-cert.ps1`, but the `signtool` signing step is documented, not automated.
+- `tools\deploy-to-vm.ps1` copies build outputs to a deploy folder, but there is no full VM deployment automation (copy into the VM and driver start are still manual).
 - Building the driver still requires a real WDK install.
 - Running the app successfully still requires the driver device to exist.
 

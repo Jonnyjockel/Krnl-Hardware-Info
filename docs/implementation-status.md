@@ -23,16 +23,21 @@
 - Basic MSBuild helper script.
 - Compile-time shared contract layout checks.
 - Beginner docs for VM-only driver service and test-signing workflows.
-- Placeholder clean, test, signing automation, and VM deployment notes.
+- `clean.ps1` with a real (interactive-confirmation-guarded) `-Execute` path.
+- `deploy-to-vm.ps1` helper that copies the built app (and driver, when built) into a deploy folder.
+- `make-test-cert.ps1` helper that creates a local self-signed test certificate for VM test-signing.
+- `tools-tests.ps1` dry-run smoke tests for the helper scripts.
 
 ## Placeholder / TODO
 
 - Driver `.inf` package.
-- Driver installation/removal scripts.
+- Driver installation/removal scripts (deliberately not started yet).
 - WinUI 3 UI. A placeholder layout exists, but no Windows App SDK project is
   wired up yet.
-- Test-signing automation.
-- VM deployment automation.
+- Automated signing of the built driver (`make-test-cert.ps1` exists; the
+  `signtool` step is documented in `test-signing.md` but not automated).
+- Automated VM deployment (`deploy-to-vm.ps1` copies files; VM install/start is
+  still manual per `vm-deployment-notes.md`).
 - Full hardware monitoring is not implemented yet. Current telemetry is limited
   to basic driver status and a basic CPUID request path.
 - Real hardware temperature monitoring.
