@@ -72,8 +72,17 @@ Test-signing gives you a normal development loop:
 - stop/remove it
 - restore the VM snapshot if needed
 
-This repo does not have the certificate/signing scripts wired up yet. That is a
-future workflow item, not something to fake.
+This repo now has a test-cert helper: `tools\make-test-cert.ps1`. Run it with `-DryRun` first to see exactly what it does; without `-DryRun` it creates a self-signed CodeSigning certificate in the current user's store and exports `krnl-test.cer` / `krnl-test.pfx` to `build\testcert\`. Run it where you actually want the certificate (ideally in the test VM workflow).
+
+After the certificate exists and the VM has test-signing enabled, sign the built driver with `signtool` (from the WDK):
+
+```powershell
+signtool sign /f build\testcert\krnl-test.pfx /p KrnlTestCert1! /fd SHA256 /t http://timestamp.digicert.com build\KrnlHardwareInfoDriver\x64\Debug\KrnlHardwareInfoDriver.sys
+```
+
+(Adjust the password if you passed a different `-PfxPassword` to `make-test-cert.ps1`.)
+
+Signing and deployment automation beyond that is a future workflow item, not something to fake.
 
 ## What Not To Do
 
